@@ -1,0 +1,63 @@
+<div class="col-md-6 col-md-offset-3">
+    <h1>Hi {{currentUser.firstName}}!</h1>
+
+    <h3>Add students to database</h3>
+    <div>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="studentinfo.fullName" name="fullName" #name="ngModel">
+                
+            </div>
+
+            <div class="form-group">
+                <label for="course">Course</label>
+                <select class="form-control" id="course" required>
+                      <option *ngFor="let cour of courses" [value]="cour">{{cour}}</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">Add</button>
+
+        </form>
+    </div> 
+    
+    <h3>Students list for academic year</h3>
+    <h6>Click on student list to edit or update their information</h6>
+    <div>
+        <ul class = "studentinfo">
+            <li *ngFor = "let pupil of studentinfo" (click) = "clickMethod(pupil)" [class.selected] = "pupil === appendedvalue">
+                <span class = "badge">{{pupil.id}}</span>&nbsp;&nbsp;&nbsp;Name:{{pupil.fullName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:{{pupil.course}}
+            </li>
+        </ul>
+    </div>
+    <div *ngIf = "appendedvalue">
+        <h4>Editing {{appendedvalue.fullName | uppercase }}'s information</h4>
+        <div>
+            <span>id:</span>{{appendedvalue.id}}
+        </div>
+        <div>
+            <span>Name:
+                <input [(ngModel)] = "appendedvalue.fullName" placeholder="full name">
+            </span>
+        </div>
+        <div>
+            <span>Course:
+                <input [(ngModel)] = "appendedvalue.course" placeholder="course">
+            </span>
+        </div>    
+    </div>
+</div>
+        
+  
+  <!--OLD CODE
+  <p>You're logged in with Angular 2/5 and Angular CLI!!</p>
+  <h3>All registered users:</h3>
+  <ul>
+      <li *ngFor="let user of users">
+          {{user.username}} ({{user.firstName}} {{user.lastName}})
+          - <a (click)="deleteUser(user.id)">Delete</a>
+      </li>
+  </ul>
+  <p><a [routerLink]="['/login']">Logout</a></p>
+</div> -->

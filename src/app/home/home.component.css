@@ -1,0 +1,24 @@
+.selected {
+    background-color:lightsalmon;
+    color: white; 
+}
+.appendedvalue {
+    margin: 0 0 2em 0;
+    list-style-type: none;
+    padding: 0;
+    width: 15em;
+}
+.appendedvalue li {
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: lightskyblue;
+    margin: .5em;
+    padding: 3em 0;
+    height: 1.6em;
+    border-radius: 5px;
+}
+.appendedvalue li.selected:hover{
+    background-color: rgb(230, 208, 17);
+    color: ivory;
+}
