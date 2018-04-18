@@ -10,8 +10,8 @@ import { UserService } from '../service/index';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  /*currentUser: User;
-  users: User[] = [];*/
+  currentUser: User;
+  users: User[] = [];
   studentinfo = students;
   appendedvalue : StudentModel;
   courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
@@ -24,11 +24,17 @@ export class HomeComponent implements OnInit {
    }
 
   ngOnInit() {
-    
+    this.loadAllUsers();
   }
   
   clickMethod(editStudent : StudentModel): void {
     this.appendedvalue = editStudent;
   }
+  
+  private loadAllUsers() {
+    this.userService.getUsers().subscribe(users => { this.users = users; });
+  }
+
+  
   
 }
