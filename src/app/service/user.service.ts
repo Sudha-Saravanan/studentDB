@@ -29,7 +29,7 @@ export class UserService {
   }
 
   getUser(id: number):Observable<User>{
-    const url = '${this.userurl} + ${id}';
+    const url = '${this.userurl} / ${id}';
     return this.http.get<User>(url).pipe(
       catchError(this.handleError<User>('getUser id = ${id}'))
     )
@@ -47,9 +47,10 @@ export class UserService {
     )
   }
 
+   
   deleteUser(user: User | number):Observable<User>{
-    const id = typeof user == 'number' ? user : user.id;
-    const url = '${this.usersurl}+${id}';
+    const id = typeof user === 'number' ? user : user.id;
+    const url = '${this.usersurl}/${id}';
     
     return this.http.delete<User>(url, httpOptions).pipe(
       catchError(this.handleError<User>('deletedUser'))

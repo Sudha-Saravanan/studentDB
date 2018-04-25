@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { StudentModel } from '../studentModel';
+import { Student } from '../_models/index';
 import { students } from '../dummyStudentDB';
 import { User } from '../_models/index';
 import { NgModule } from '@angular/core';
@@ -13,7 +13,7 @@ export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
   studentinfo = students;
-  appendedvalue : StudentModel;
+  appendedvalue : Student;
   courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
   submitted = false;
 
@@ -26,8 +26,11 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loadAllUsers();
   }
+  adminDeleteUser(id: number) {
+    this.userService.deleteUser(id).subscribe(() => { this.loadAllUsers() });
+}
   
-  clickMethod(editStudent : StudentModel): void {
+  clickMethod(editStudent : Student): void {
     this.appendedvalue = editStudent;
   }
   

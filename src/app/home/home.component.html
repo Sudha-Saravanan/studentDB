@@ -2,10 +2,10 @@
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th><h1>Hi Admin {{currentUser.username}}!</h1>
-                    <p>You're logged in!!!</p></th>
-                <th></th>
-                <th></th>
+                    <p>You're logged in!!!</p>
+                </th>
                 <th></th>
             </tr>
         </thead>
@@ -15,10 +15,12 @@
                     <ul>
                         <li *ngFor="let user of users">
                             {{user.username}}
+                            - <a (click)="adminDeleteUser(user.id)">Delete</a>
                         </li>
                     </ul>
                 </td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td></td>
+               
                 <td><h3>Students list for academic year</h3>
                     <h6>Click on student list to edit or update their information</h6>
                     <div>
@@ -31,6 +33,10 @@
                 </td>
             </tr>
             <tr>
+                <td>
+                </td>
+                <td>
+                </td>
                 <td><h3>Add students to database</h3>
                     <div>
                         <form>
@@ -52,34 +58,31 @@
                         </form>
                     </div> 
                 </td>
-                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                <td><div *ngIf = "appendedvalue">
-                        <h3>Editing {{appendedvalue.fullName | uppercase }}'s information</h3>
-                        <div>
-                            <span>id:</span>{{appendedvalue.id}}
-                        </div>
-                        <br/>
-                        <div>
-                            <span>Name:
-                                <input [(ngModel)] = "appendedvalue.fullName" placeholder="full name">
-                            </span>
-                        </div>
-                        <br/>
-                        <div>
-                            <span>Course:
-                                <input [(ngModel)] = "appendedvalue.course" placeholder="course">
-                            </span>
-                        </div>
-                        <br/>
-                        <button type="submit" class="btn btn-success">Save</button>
-                    </div>
-                </td>
             </tr>
             <tr>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td></td>
+                <td><div *ngIf = "appendedvalue">
+                    <h3>Editing {{appendedvalue.fullName | uppercase }}'s information</h3>
+                    <div>
+                        <span style="font-weight: bold">id:{{appendedvalue.id}}</span>
+                    </div>
+                    <br/>
+                    <div>
+                        <span style="font-weight: bold">Name:</span>
+                        <input [(ngModel)] = "appendedvalue.fullName" placeholder="full name">
+                        
+                    </div>
+                    <br/>
+                    <div>
+                        <span style="font-weight: bold">Course:</span>
+                        <input [(ngModel)] = "appendedvalue.course" placeholder="course">
+                        
+                    </div>
+                    <br/>
+                    <br/>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div></td>
             </tr>
         </tbody>
     </table>
