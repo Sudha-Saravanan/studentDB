@@ -39,10 +39,12 @@
                 </td>
                 <td><h3>Add students to database</h3>
                     <div>
-                        <form>
+                        <form novalidate (ng-submit)="addStudentDB(studentinfo)">
                             <div class="form-group">
                                 <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" required [(ngModel)]="studentinfo.fullName" name="fullName" #name="ngModel">
+                                <input type="text" class="form-control" id="name" 
+                                required [(ngModel)]="studentinfo.fullName" name="fullName" 
+                                #name="ngModel" minlength="5" pattern="^[A-Za-z ]+$"/>
                                 
                             </div>
                 

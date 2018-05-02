@@ -12,6 +12,7 @@ import { UserService } from '../service/index';
 export class HomeComponent implements OnInit {
   currentUser: User;
   users: User[] = [];
+  students: Student[] = [];
   studentinfo = students;
   appendedvalue : Student;
   courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
@@ -38,6 +39,9 @@ export class HomeComponent implements OnInit {
     this.userService.getUsers().subscribe(users => { this.users = users; });
   }
 
+  addStudentDB(fullName: Student): void {
+    this.studentinfo.push(fullName);
+  }
   
   
 }

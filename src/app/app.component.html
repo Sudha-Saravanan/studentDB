@@ -3,7 +3,11 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
+  <nav>
+    <a routerLink="home" routerLinkActive="active">Home</a>||<a routerLink="login" routerLinkActive="active">Login</a>||<a routerLink="register" routerLinkActive="active">Register</a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>
-<app-home></app-home>
-<!--<app-register></app-register>
+<!-- <app-home></app-home>
+<app-register></app-register>
 <app-login></app-login>-->
