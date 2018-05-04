@@ -8,10 +8,11 @@ import { AppComponent } from './app.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { UserService } from './service/index';
+import { UserService, StudentService } from './service/index';
 import {HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DummyUserDBService } from './dummyUserDB.service';
 import { appRoutes } from './routerConfig';
+
 
 @NgModule({
   declarations: [
@@ -29,7 +30,7 @@ import { appRoutes } from './routerConfig';
       DummyUserDBService, {dataEncapsulation: false}
     )    
   ],
-  providers: [UserService],//Http call get, put, post, delete
+  providers: [UserService, StudentService],//Http call get, put, post, delete
   bootstrap: [AppComponent] //To show the page on the first page
 })
 export class AppModule { }

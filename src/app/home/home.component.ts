@@ -38,10 +38,12 @@ export class HomeComponent implements OnInit {
   private loadAllUsers() {
     this.userService.getUsers().subscribe(users => { this.users = users; });
   }
-
-  addStudentDB(fullName: Student): void {
-    this.studentinfo.push(fullName);
+  
+  addStudentDB(id, fullName, course: Student): void {
+    this.studentinfo.push(id, fullName, course);
+    
   }
+  
   
   
 }

@@ -3,11 +3,28 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <nav>
-    <a routerLink="home" routerLinkActive="active">Home</a>||<a routerLink="login" routerLinkActive="active">Login</a>||<a routerLink="register" routerLinkActive="active">Register</a>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a routerLink="home" routerLinkActive="active">Home</a>
+        </li>    
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a routerLink="login" routerLinkActive="active">Login</a>
+        </li>    
+      </ul>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a routerLink="register" routerLinkActive="active">Register</a>
+        </li>    
+      </ul>
+
+    </div>
   </nav>
-  <router-outlet></router-outlet>
+  
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<!-- <app-home></app-home>
-<app-register></app-register>
-<app-login></app-login>-->
