@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   students: Student[] = [];
   studentinfo = students;
   appendedvalue : Student;
-  courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
+  // courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
   submitted = false;
 
   onSubmit() { this.submitted = true; }
