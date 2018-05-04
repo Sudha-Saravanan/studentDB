@@ -44,7 +44,7 @@
                         <form novalidate (ngSubmit)="addStudentDB(studentinfo)"> 
                             <div class="form-group">
                                 
-                                <label for="id" ng-repeat = "let studentid of studentinfo"> ID:{{studentinfo.length+1}}</label>
+                                <!-- <label for="id" ng-repeat = "let studentid of studentinfo"> ID:{{studentinfo.length+1}}</label> -->
                                 
                                 <br>    
                                 <label for="name">Name</label>
@@ -59,8 +59,8 @@
                                 <input type="text" class="form-control" id="course" 
                                 required [(ngModel)]="studentinfo.course" name="course" 
                                 #name="ngModel" pattern="^[A-Za-z ]+$"/>
-                                <!-- <select class="form-control" id="course" required>
-                                      <option *ngFor="let cour of courses" [value]="cour">{{cour}}</option>
+                                <!-- <select class="form-control" id="course" [(ngModel)]="studentinfo.course"  #name="ngModel" required>
+                                      <option *ngFor="let cour of courses" [ngValue]="cour">{{cour}}</option>
                                 </select> -->
                             </div>
                         

@@ -15,9 +15,13 @@ export class HomeComponent implements OnInit {
   students: Student[] = [];
   studentinfo = students;
   appendedvalue : Student;
-  // courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
-  submitted = false;
+  //newStudent = students.id;
 
+  
+  //studentid = this.studentinfo.length+1;
+  courses = ['Dialysis', 'Cardiac Care', 'Medical Imaging', 'Radio Therapy', 'Sterilization Management'];
+  submitted = false;
+  selectedCourse:any;
   onSubmit() { this.submitted = true; }
 
   constructor(private userService: UserService) {
@@ -29,18 +33,20 @@ export class HomeComponent implements OnInit {
   }
   adminDeleteUser(id: number) {
     this.userService.deleteUser(id).subscribe(() => { this.loadAllUsers() });
-}
+  }
   
   clickMethod(editStudent : Student): void {
     this.appendedvalue = editStudent;
   }
   
   private loadAllUsers() {
+
     this.userService.getUsers().subscribe(users => { this.users = users; });
   }
   
   addStudentDB(id, fullName, course: Student): void {
-    this.studentinfo.push(id, fullName, course);
+    
+    this.studentinfo.push({"id": this.studentinfo.length+1 , "fullName":this.studentinfo.fullName, "course": this.studentinfo.course});
     
   }
   
