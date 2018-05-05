@@ -14,11 +14,13 @@
             <tr>
                 <td><h3>All registered users:</h3>
                     <ul>
-                        <li *ngFor="let user of users">
+                            <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
+                        <!-- <li *ngFor="let user of users">
                             {{user.username}}
                             - <a (click)="adminDeleteUser(user.id)">Delete</a>
-                        </li>
+                        </li> -->
                     </ul>
+                    <p><a [routerLink]="['/login']">Logout</a></p>
                 </td>
                 <!-- <td></td> -->
                
@@ -41,27 +43,27 @@
                 <!-- </td> -->
                 <td><h3>Add students to database</h3>
                     <div>
-                        <form novalidate (ngSubmit)="addStudentDB(studentinfo)"> 
+                        <form #f="ngForm" novalidate (ngSubmit)="addStudentDB(studentinfo)"> 
                             <div class="form-group">
                                 
                                 <!-- <label for="id" ng-repeat = "let studentid of studentinfo"> ID:{{studentinfo.length+1}}</label> -->
                                 
                                 <br>    
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name" 
+                                <label for="fullName">Name</label>
+                                <input type="text" class="form-control" id="fullName" 
                                     required [(ngModel)]="studentinfo.fullName" name="fullName" 
-                                    #name="ngModel" minlength="5" pattern="^[A-Za-z ]+$"/>
+                                     minlength="5" pattern="^[A-Za-z ]+$"/>
                                 
                             </div>
                 
                             <div class="form-group">
                                 <label for="course">Course</label>
-                                <input type="text" class="form-control" id="course" 
+                                <!-- <input type="text" class="form-control" id="course" 
                                 required [(ngModel)]="studentinfo.course" name="course" 
-                                #name="ngModel" pattern="^[A-Za-z ]+$"/>
-                                <!-- <select class="form-control" id="course" [(ngModel)]="studentinfo.course"  #name="ngModel" required>
+                                #name="ngModel" pattern="^[A-Za-z ]+$"/> -->
+                                <select class="form-control" id="course" [(ngModel)]="studentinfo.course" name="course" required>
                                       <option *ngFor="let cour of courses" [ngValue]="cour">{{cour}}</option>
-                                </select> -->
+                                </select>
                             </div>
                         
                             
@@ -71,7 +73,7 @@
                     </div> 
                 </td>
             </tr>
-            <tr>
+            <tr>`
                 <td></td>
                 <!-- <td></td> -->
                 <td><div *ngIf = "appendedvalue">
