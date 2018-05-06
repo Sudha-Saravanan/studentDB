@@ -13,7 +13,7 @@ import { UserService } from '../_services/user.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
+  // currentUser: User;
   users: User[] = [];
   
   studentinfo = students;
