@@ -1,9 +1,10 @@
 <div class="col-md-6 col-md-offset-3">
+        
     <div class="rTable">
         <div class="rTableRow">
             <div class="rTableHead" align = "center">
-                <h4 *ngFor="let user of users">Hi {{user.firstName}} {{user.lastName}}!</h4>
-                <p>You're logged in!!!</p>
+                <h4 *ngFor="let user of users">Hi {{currentUser.firstName}}!</h4>
+                <p>You're logged in!!!</p><a align = "left" [routerLink]="['/login']">Logout</a>
             </div>
             <!-- <div class="rTableHead">&nbsp;</div> -->
         </div>

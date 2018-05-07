@@ -4,7 +4,4 @@ export class User {
     password: string;
     firstName: string;
     lastName: string;
-    fullName = function () {
-        return this.firstName + ' ' + this.lastName;
-      };
 }

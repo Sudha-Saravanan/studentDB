@@ -4,16 +4,16 @@ import { Student } from '../_models/index';
 import { students } from '../dummyStudentDB';
 import { User } from '../_models/index';
 import { NgModule } from '@angular/core';
-//import { UserService } from '../service/index';
+// import { UserService } from '../service/index';
 import { UserService } from '../_services/user.service';
 @Component({
-  moduleId: module.id,
+  moduleId: module.id.toString(),
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  // currentUser: User;
+  currentUser: User;
   users: User[] = [];
   
   studentinfo = students;
@@ -28,16 +28,17 @@ export class HomeComponent implements OnInit {
   onSubmit() { this.submitted = true; }
 
   constructor(private userService: UserService) {
-
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
    }
 
   ngOnInit() {
     // get users from secure api end point
-    this.userService.getUsers()
-    .subscribe(users => {
-        this.users = users;
-    });
-    //this.loadAllUsers();
+    this.loadAllUsers();
+    // this.userService.getUsers()
+    // .subscribe(users => {
+    //     this.users = users;
+    // });
+    //
   }
   // adminDeleteUser(id: number) {
   //   this.userService.deleteUser(id).subscribe(() => { this.loadAllUsers() });
@@ -47,10 +48,9 @@ export class HomeComponent implements OnInit {
     this.appendedvalue = editStudent;
   }
   
-  // private loadAllUsers() {
-
-  //   this.userService.getUsers().subscribe(users => { this.users = users; });
-  // }
+  private loadAllUsers() {
+    this.userService.getAll().subscribe(users => { this.users = users; });
+}
   
   addStudentDB(id, fullName, course: Student): void {
     
