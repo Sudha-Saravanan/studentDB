@@ -1,79 +1,79 @@
 <div class="col-md-6 col-md-offset-3">
         
-    <div class="rTable">
-        <div class="rTableRow">
-            <div class="rTableHead" align = "center">
-                <h4 *ngFor="let user of users">Hi {{currentUser.firstName}}!</h4>
-                <p>You're logged in!!!</p><a align = "left" [routerLink]="['/login']">Logout</a>
+        <div class="rTable">
+            <div class="rTableRow">
+                <div class="rTableHead" align = "center">
+                    <h4 *ngFor="let user of users">Hi {{currentUser.firstName}}!</h4>
+                    <p>You're logged in!!!</p><a align = "left" [routerLink]="['/login']">Logout</a>
+                </div>
+                
             </div>
-            <!-- <div class="rTableHead">&nbsp;</div> -->
-        </div>
-        <div class="rTableRow" align = "left">
-            <div class="rTableCell">
-                <h3>Students list for academic year</h3>
-                <h6>Click on student list to edit or update their information</h6>
-                <div>
-                    <ul class = "studentinfo" *ngFor = "let pupil of studentinfo" (click) = "clickMethod(pupil)" [class.selected] = "pupil === appendedvalue">
-                        <span class = "badge">{{pupil.id}}</span>&nbsp;&nbsp;&nbsp;Name:{{pupil.fullName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:{{pupil.course}}    
-                    </ul>
+            <div class="rTableRow" align = "left">
+                <div class="rTableCell">
+                    <h3>Students list for academic year</h3>
+                    <h6>Click on student list to edit or update their information</h6>
+                    <div>
+                        <ul class = "studentinfo" *ngFor = "let pupil of studentinfo" (click) = "clickMethod(pupil)" [class.selected] = "pupil === appendedvalue">
+                            <span class = "badge">{{pupil.id}}</span>&nbsp;&nbsp;&nbsp;Name:{{pupil.fullName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:{{pupil.course}}    
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="rTableRow">
-            <div class="rTableCell">
-               <h3>Add students to database</h3>
-                    <div>
-                        <form #f="ngForm" novalidate (ngSubmit)="addStudentDB(studentinfo)"> 
-                            <div class="form-group">
-                                <br>    
-                                <label for="fullName">Name</label>
-                                <input type="text" class="form-control" id="fullName" 
-                                    required [(ngModel)]="studentinfo.fullName" name="fullName" 
-                                     minlength="5" pattern="^[A-Za-z ]+$"/>
-                                
-                            </div>
-                
-                            <div class="form-group">
-                                <label for="course">Course</label>
-                                <select class="form-control" id="course" [(ngModel)]="studentinfo.course" name="course" required>
-                                      <option *ngFor="let cour of courses" [ngValue]="cour">{{cour}}</option>
-                                </select>
-                            </div>
-                        
+            <div class="rTableRow">
+                <div class="rTableCell">
+                   <h3>Add students to database</h3>
+                        <div>
+                            <form #f="ngForm" novalidate (ngSubmit)="addStudentDB(studentinfo.value)"> 
+                                <div class="form-group">
+                                    <br>    
+                                    <label for="fullName">Name</label>
+                                    <input type="text" class="form-control" id="fullName" 
+                                        required [(ngModel)]="studentinfo.fullName" name="fullName" 
+                                         minlength="5" pattern="^[A-Za-z ]+$"/>
+                                    
+                                </div>
+                    
+                                <div class="form-group">
+                                    <label for="course">Course</label>
+                                    <select class="form-control" id="course" [(ngModel)]="studentinfo.course" name="course" required>
+                                          <option *ngFor="let cour of courses" [ngValue]="cour">{{cour}}</option>
+                                    </select>
+                                </div>
                             
-                            <button type="submit" class="btn btn-success">Add Student</button>
-                           
-                        </form>
-                    </div>
-            </div>
-        </div>
-        <div class="rTableRow">
-            <div class="rTableCell">
-                    <div *ngIf = "appendedvalue">
-                            <h3>Editing {{appendedvalue.fullName | uppercase }}'s information</h3>
-                            
-                            <div>
-                                <span style="font-weight: bold">id:{{appendedvalue.id}}</span>
-                            </div>
-                            <br/>
-                            <div>
-                                <span style="font-weight: bold">Name:</span>
-                                <input [(ngModel)] = "appendedvalue.fullName" placeholder="full name">
                                 
-                            </div>
-                            <br/>
-                            <div>
-                                <span style="font-weight: bold">Course:</span>
-                                <input [(ngModel)] = "appendedvalue.course" placeholder="course">
-                                
-                            </div>
-                            <br/>
-                            <br/>
-                            <button type="submit" class="btn btn-success">Save</button>
-                    </div>
+                                <button type="submit" class="btn btn-success">Add Student</button>
+                               
+                            </form>
+                        </div>
+                </div>
             </div>
+            <div class="rTableRow">
+                <div class="rTableCell">
+                        <div *ngIf = "appendedvalue">
+                                <h3>Editing {{appendedvalue.fullName | uppercase }}'s information</h3>
+                                
+                                <div>
+                                    <span style="font-weight: bold">id:{{appendedvalue.id}}</span>
+                                </div>
+                                <br/>
+                                <div>
+                                    <span style="font-weight: bold">Name:</span>{{fullName}}
+                                    <input [(ngModel)] = "appendedvalue.fullName" placeholder="full name">
+                                    
+                                </div>
+                                <br/>
+                                <div>
+                                    <span style="font-weight: bold">Course:</span>
+                                    <input [(ngModel)] = "appendedvalue.course" placeholder="course">
+                                    
+                                </div>
+                                <br/>
+                                <br/>
+                                <button type="submit" class="btn btn-success">Save</button>
+                        </div>
+                </div>
+            </div>
+    
         </div>
-
     </div>
-</div>
    
