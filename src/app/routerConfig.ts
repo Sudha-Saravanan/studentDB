@@ -6,10 +6,6 @@ import { RegisterComponent } from './register/register.component';
 import { AuthGuard } from './_guards/index';
 
 export const appRoutes: Routes = [
-    // { 
-    //     path: 'home',
-    //     component: HomeComponent
-    // },
 
     { 
         path: 'login',

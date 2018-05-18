@@ -3,18 +3,34 @@
         <div class="rTable">
             <div class="rTableRow">
                 <div class="rTableHead" align = "center">
-                    <h4 *ngFor="let user of users">Hi {{currentUser.firstName}}!</h4>
-                    <p>You're logged in!!!</p><a align = "left" [routerLink]="['/login']">Logout</a>
+                    <h4>Hi {{currentUser.firstName}}!</h4>
+                    <p>All Registered Users:</p>
+                    <ul>
+                        <li *ngFor="let user of users">
+                            {{user.username}} ({{user.firstName}} {{user.lastName}})
+                            - <a (click)="deleteUser(user.id)">Delete</a>
+                        </li>
+                    </ul>
+                    <!-- - <a (click)="deleteUser(user._id)">Delete</a> -->
+                    <p>You're logged in!!!<a align = "left" [routerLink]="['/login']">Logout</a></p>
                 </div>
                 
             </div>
             <div class="rTableRow" align = "left">
                 <div class="rTableCell">
                     <h3>Students list for academic year</h3>
-                    <h6>Click on student list to edit or update their information</h6>
-                    <div>
+                    <h6>Click on students list to edit or update their information</h6>
+                    <div class="form-group">
+                        <!-- <div class="col-md-6" >
+                                <label for="sortByCourse">Sort by Course: </label>
+                                <select class="form-control" required [(ngModel)]="studentinfo.course">
+                                    <option *ngFor="let cour of (courses | sortArrayByCourse)" [value]="cour.course">{{cour.course}}</option>
+                                </select>
+                            </div> -->
                         <ul class = "studentinfo" *ngFor = "let pupil of studentinfo" (click) = "clickMethod(pupil)" [class.selected] = "pupil === appendedvalue">
-                            <span class = "badge">{{pupil.id}}</span>&nbsp;&nbsp;&nbsp;Name:{{pupil.fullName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:{{pupil.course}}    
+                                
+                            <span class = "badge" >{{pupil.id}}</span>&nbsp;&nbsp;&nbsp;Name:{{pupil.fullName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Course:{{pupil.course}}
+                            
                         </ul>
                     </div>
                 </div>
@@ -47,6 +63,7 @@
                         </div>
                 </div>
             </div>
+            
             <div class="rTableRow">
                 <div class="rTableCell">
                         <div *ngIf = "appendedvalue">
@@ -75,5 +92,5 @@
             </div>
     
         </div>
-    </div>
+</div>
    

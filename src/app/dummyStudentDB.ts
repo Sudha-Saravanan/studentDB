@@ -5,6 +5,8 @@ export const students: Student[]=[
     { id:2, fullName: "Rajan Chad", course:"Cardiac Care"},
     { id:3, fullName: "Nasser Husain", course: "Medical Imaging"},
     { id:4, fullName: "Pooja Khan", course: "Radio Therapy"},
-    { id:5, fullName: "Rima Kothari", course: "Sterilization Management"}
+    { id:5, fullName: "Rima Kothari", course: "Sterilization Management"},
+    { id:6, fullName: "Yesh Vijay", course: "Dialysis"}
 ]
+
     
